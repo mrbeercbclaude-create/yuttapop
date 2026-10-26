@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ยุทธภพไอเดิล</title>
+<meta name="theme-color" content="#15171c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<section id="login" class="login" hidden>
+  <div class="login-box">
+    <div class="seal">武</div>
+    <h1>ยุทธภพไอเดิล</h1>
+    <p class="sub">ล็อกอินเพื่อเล่นต่อได้ทั้งคอมและมือถือ</p>
+    <form id="loginForm">
+      <label for="email">อีเมล</label>
+      <input id="email" type="email" autocomplete="email" required>
+      <label for="pw">รหัสผ่าน (อย่างน้อย 6 ตัว)</label>
+      <input id="pw" type="password" autocomplete="current-password" minlength="6" required>
+      <div class="row2">
+        <button type="submit" class="primary" id="btnSignIn">เข้าสู่ระบบ</button>
+        <button type="button" id="btnSignUp">สมัครใหม่</button>
+      </div>
+    </form>
+    <p id="loginMsg" class="msg" role="status"></p>
+    <button type="button" class="link" id="btnGuest">เล่นแบบไม่ล็อกอิน (เซฟแค่ในเครื่องนี้)</button>
+  </div>
+</section>
+
+<main id="app" hidden>
+  <header class="top">
+    <div class="who">
+      <span class="badge" id="realmBadge"></span>
+      <div><b id="heroName">ชองมุน</b> <span class="realm" id="realmName"></span><br><span class="sub">Lv <b id="heroLv">1</b></span></div>
+    </div>
+    <div class="cur">
+      <span title="ตำลึง"><i class="ic-dot gold"></i><b id="taels">0</b></span>
+      <span title="ปราณ"><i class="ic-dot qi"></i><b id="qi">0</b></span>
+      <span class="sync" id="sync" title="สถานะเซฟ">●</span>
+    </div>
+  </header>
+
+  <div id="conflict" class="banner" hidden>
+    มีเซฟใหม่กว่าจากอุปกรณ์อื่น
+    <button data-act="useCloud">โหลดเซฟนั้น</button>
+    <button data-act="forcePush">ใช้เซฟเครื่องนี้</button>
+  </div>
+
+  <div class="stage">
+    <canvas id="cv" width="640" height="360" aria-label="สนามต่อสู้ แตะศัตรูเพื่อเล็ง แตะพื้นเพื่อเดิน"></canvas>
+    <div class="hud">
+      <div class="bar"><span>พลังชีวิต <span id="hpTxt"></span></span><div class="meter"><i id="hpBar" class="hp"></i></div></div>
+      <div class="bar"><span>EXP <span id="expTxt"></span></span><div class="meter"><i id="expBar" class="exp"></i></div></div>
+    </div>
+    <div id="modal" class="modal" hidden><div class="box" id="modalBox"></div></div>
+  </div>
+
+  <div class="modes" id="modes"></div>
+  <div class="log" id="log" role="status"></div>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="char" class="on">ตัวละคร</button>
+    <button data-tab="tech">วิชา</button>
+    <button data-tab="mer">ลมปราณ</button>
+    <button data-tab="shop">ร้าน</button>
+    <button data-tab="map">แผนที่</button>
+    <button data-tab="acc">บัญชี</button>
+  </nav>
+  <section class="panel" id="panel"></section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/art.js"></script>
+<script src="js/save.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
